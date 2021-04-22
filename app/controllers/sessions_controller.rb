@@ -1,5 +1,8 @@
 class SessionsController < ApplicationController
-  def new
+  def new #login form
+    if logged_in?
+      redirect_to root_path
+    end
   end
 
   def create
@@ -14,5 +17,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+    session.delete :user_id
+    redirect_to login_path
   end
 end

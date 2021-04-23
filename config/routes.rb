@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   post '/signup', to: 'users#create'
 
   resources :destinations do
-    resources :itineraries
+    resources :itineraries, only: [:index, :new, :create]
   end
 
   #add itinerary/activity nested route?

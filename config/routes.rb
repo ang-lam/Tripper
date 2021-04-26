@@ -11,8 +11,8 @@ Rails.application.routes.draw do
     resources :itineraries, only: [:index, :new, :create]
   end
 
-  #add itinerary/activity nested route?
-
-  resources :itineraries
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  resources :itineraries do
+    resources :activities, only: [:new, :create]
+  end
+  
 end

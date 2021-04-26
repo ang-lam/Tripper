@@ -2,12 +2,13 @@
 
 <%= form_with model: @itinerary do |f| %>
     <%= f.label :date %>
-    <%= f.date_select :date, :order => [:month, :day, :year] %> <br>
+    <%= f.date_field :date %>
+    
     
     <h2>Add Activity</h2><br>
     <%= f.fields_for :activities do |a| %>
         <%= a.label :time %>
-        <%= a.time_select :time, {ampm: true} %>
+        <%= a.time_field :time %>
         <%= a.label :description %>
         <%= a.text_field :description %><br><br>
     <% end %>

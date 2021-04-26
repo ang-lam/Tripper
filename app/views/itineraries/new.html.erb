@@ -1,0 +1,17 @@
+<h1> Create an Itinerary for Your Trip</h1>
+
+<%= form_with model: @itinerary do |f| %>
+    <%= f.label :date %>
+    <%= f.date_select :date, :order => [:month, :day, :year] %> <br>
+    
+    <h2>Add Activity</h2><br>
+    <%= f.fields_for :activities do |a| %>
+        <%= a.label :time %>
+        <%= a.time_select :time, {ampm: true} %>
+        <%= a.label :description %>
+        <%= a.text_field :description %><br><br>
+    <% end %>
+
+
+    <%= f.submit 'Submit' %>
+<% end %>

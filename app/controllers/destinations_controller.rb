@@ -23,6 +23,10 @@ class DestinationsController < ApplicationController
     end
 
     def destroy
+        @destination = Destination.find_by(id: params[:id])
+        @destination.destroy
+        
+        redirect_to root_path
     end
 
     private

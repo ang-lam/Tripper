@@ -4,4 +4,5 @@
 <%= @destination.state %><br>
 <%= @destination.country %><br>
 
-<%= link_to "Create New Itinerary", new_itinerary_path %>
+<%= link_to "Create New Itinerary", new_itinerary_path %><br>
+<%= link_to "Delete This Trip", {action: :destroy, id: @destination.id}, method: :delete, data: {confirm: 'Are you sure?'} %>

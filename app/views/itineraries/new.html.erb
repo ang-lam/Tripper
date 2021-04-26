@@ -1,8 +1,10 @@
 <h1> Create an Itinerary for Your Trip</h1>
 
-<%= form_with model: @itinerary do |f| %>
+<%= form_with model: [@destination, @itinerary] do |f| %>
+    <%= f.hidden_field :destination_id, value: @destination.id %>
     <%= f.label :date %>
     <%= f.date_field :date %>
+
     
     
     <h2>Add Activity</h2><br>

@@ -1,0 +1,6 @@
+<h1><%= @itinerary.date %></h1>
+
+<% @activities.each do |act| %>
+    <li><%= act.time %>
+    <%= act.description %></li>
+<% end %>

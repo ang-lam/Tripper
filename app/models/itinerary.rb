@@ -4,4 +4,12 @@ class Itinerary < ApplicationRecord
     has_many :activities, dependent: :destroy
 
     accepts_nested_attributes_for :activities
+
+    validate :date_cannot_be_in_the_past
+
+    def date_cannot_be_in_the_past
+        if date < Date.today && date.present?
+            errors.add(:date, "cannot be in the past")
+        end
+    end
 end

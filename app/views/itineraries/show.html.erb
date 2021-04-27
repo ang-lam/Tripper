@@ -1,6 +1,6 @@
-<h1><%= @itinerary.date %></h1>
+<h1><%= @itinerary.date.strftime("%A, %b %e, %Y") %></h1>
 
 <% @activities.each do |act| %>
-    <li><%= act.time %>
+    <li><%= act.time.strftime("%l:%M %p") %>
     <%= act.description %></li>
 <% end %>

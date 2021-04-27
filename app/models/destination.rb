@@ -3,4 +3,6 @@ class Destination < ApplicationRecord
     has_many :users, through: :itineraries
 
     accepts_nested_attributes_for :itineraries
+
+    validates :city, :country, presence: true
 end

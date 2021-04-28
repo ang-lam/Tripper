@@ -1,5 +1,9 @@
 class ItinerariesController < ApplicationController
+    
+    def index
+    end
 
+    
     def show
         @itinerary = Itinerary.find_by(id: params[:id])
         @activities = @itinerary.activities
@@ -8,7 +12,7 @@ class ItinerariesController < ApplicationController
     def new
         @destination = Destination.find_by(id: params[:destination_id])
         @itinerary = @destination.itineraries.build
-        @itinerary.activities.build
+        2.times {@itinerary.activities.build}
         # 8.times {@itinerary.activities.build}
     end
 

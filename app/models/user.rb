@@ -5,6 +5,7 @@ class User < ApplicationRecord
   has_many :destinations, through: :itineraries
 
   validates :first_name, :last_name, presence: true
+  validates :email, uniqueness: true
   validates :password, length: { in: 6..10 }
   validate :is_email?
 

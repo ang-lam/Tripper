@@ -4,3 +4,6 @@
     <li><%= act.time.strftime("%l:%M %p") %>
     <%= act.description %></li>
 <% end %>
+
+<%= link_to "Go Back to All Itineraries", destination_itineraries_path(@itinerary.destination) %>
+<%= link_to "Delete This Itinerary", {action: :destroy, id: @itinerary.id}, method: :delete, data: {confirm: 'Are you sure?'} %>

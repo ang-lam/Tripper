@@ -5,6 +5,7 @@ class Itinerary < ApplicationRecord
 
     accepts_nested_attributes_for :activities
 
+    validates :date, uniqueness:  { message: "an itinerary already exists for this date"}
     validate :date_cannot_be_in_the_past
 
     def date_cannot_be_in_the_past

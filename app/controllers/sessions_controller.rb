@@ -1,8 +1,6 @@
 class SessionsController < ApplicationController
   def new #login form
-    if logged_in?
-      redirect_to root_path
-    end
+    redirect_if_logged_in
   end
 
   def create

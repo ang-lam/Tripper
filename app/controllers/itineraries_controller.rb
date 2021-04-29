@@ -5,6 +5,7 @@ class ItinerariesController < ApplicationController
 
 
     def show
+        #only render if logged in and belongs to user
         @itinerary = Itinerary.find_by(id: params[:id])
         @activities = @itinerary.activities
     end
@@ -25,6 +26,11 @@ class ItinerariesController < ApplicationController
         else
             render :new
         end
+    end
+
+    def update
+        #find itinerary
+        #if @itinerary.update(params)
     end
 
     def destroy

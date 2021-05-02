@@ -1,10 +1,14 @@
 class DestinationsController < ApplicationController
-    def new
-        @destination = Destination.new
+    def index
+        @destinations = current_user.destinations.uniq
     end
 
     def show
         @destination = Destination.find_by(id: params[:id])
+    end
+
+    def new
+        @destination = Destination.new
     end
     
     def create

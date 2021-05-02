@@ -5,14 +5,14 @@ class Itinerary < ApplicationRecord
 
     accepts_nested_attributes_for :activities,
         allow_destroy: true, 
-        reject_if: proc {|attr| attr['time'].blank? || attr['description'].blank?}
+        reject_if: proc {|attr| attr['time'].blank? && attr['description'].blank?}
 
-    validates :date, uniqueness:  { message: "an itinerary already exists for this date"}
+    # validates :date, uniqueness:  { message: "has an exisiting itinerary"}
     validate :date_cannot_be_in_the_past
 
     def date_cannot_be_in_the_past
-        if date < Date.today && date.present?
-            errors.add(:date, "cannot be in the past")
+        if !date.present? || date < Date.today
+            errors.add(:date, "cannot be in the past or empty")
         end
     end
 end

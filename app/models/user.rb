@@ -13,5 +13,5 @@ class User < ApplicationRecord
     if !email.match(/\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i)
       errors.add(:email, "not a valid email")
     end 
-  end 
+  end
 end

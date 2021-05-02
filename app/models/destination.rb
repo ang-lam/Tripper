@@ -5,4 +5,7 @@ class Destination < ApplicationRecord
     accepts_nested_attributes_for :itineraries
 
     validates :city, :country, presence: true
+
+    scope :popular_trips, -> {joins(:itineraries).group('id').order('count(destinations.id) desc').limit(2)}
+
 end

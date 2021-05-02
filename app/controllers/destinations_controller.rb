@@ -8,6 +8,7 @@ class DestinationsController < ApplicationController
     end
 
     def new
+        @top_destinations = Destination.popular_trips
         @destination = Destination.new
     end
     

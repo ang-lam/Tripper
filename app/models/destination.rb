@@ -7,5 +7,5 @@ class Destination < ApplicationRecord
     validates :city, :country, presence: true
 
     scope :popular_trips, -> {joins(:itineraries).group('id').order('count(destinations.id) desc').limit(2)}
-
+    scope :users_trips, -> (user) {joins(:itineraries).where(id = "destination_id").order(:date).uniq}
 end

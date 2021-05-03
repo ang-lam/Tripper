@@ -1,6 +1,7 @@
 class DestinationsController < ApplicationController
     def index
-        @destinations = current_user.destinations.uniq
+        # @destinations = current_user.destinations.uniq
+        @destinations = Destination.users_trips(current_user)
     end
 
     def show
@@ -31,7 +32,7 @@ class DestinationsController < ApplicationController
         @destination = Destination.find_by(id: params[:id])
         @destination.destroy
         
-        redirect_to root_path
+        redirect_to destinations_path
     end
 
     private

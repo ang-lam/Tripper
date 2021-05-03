@@ -2,8 +2,8 @@ class ItinerariesController < ApplicationController
     
     def index
         # @destination = current_user.destinations.find_by(id: params[:destination_id])
-        destination = Destination.find_by(id: params[:destination_id]) if params[:destination_id]
-        @itineraries = Itinerary.trips_itineraries(current_user, destination)
+        @destination = Destination.find_by(id: params[:destination_id]) if params[:destination_id]
+        @itineraries = Itinerary.trips_itineraries(current_user, @destination)
     end
 
 

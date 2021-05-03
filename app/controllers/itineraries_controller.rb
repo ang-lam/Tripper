@@ -1,6 +1,7 @@
 class ItinerariesController < ApplicationController
     
     def index
+        @destination = current_user.destinations.find_by(id: params[:destination_id])
     end
 
 

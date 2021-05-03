@@ -1,1 +1,11 @@
-<h1>Destination's Itineraries</h1>
+<h1><%= @destination.city %> Itineraries</h1>
+
+<% @destination.itineraries.each do |itinerary| %>
+    <%= itinerary.date.strftime("%A, %b %e, %Y") %>
+    <% itinerary.activities.each do |activity| %>
+    <li><%= activity.time.strftime("%l:%M %p") %>
+    <%= activity.description %></li>
+    <% end %><br>
+<% end %>
+
+<br><%= link_to "Create New Itinerary", new_destination_itinerary_path %>

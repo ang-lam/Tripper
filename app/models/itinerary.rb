@@ -15,4 +15,7 @@ class Itinerary < ApplicationRecord
             errors.add(:date, "cannot be in the past or empty")
         end
     end
+
+    scope :trips_itineraries, -> (user, destination) {where(destination_id: destination.id, user_id: user.id).order(:date)}
+
 end

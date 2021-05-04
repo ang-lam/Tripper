@@ -9,7 +9,7 @@ class UsersController < ApplicationController
         @user = User.new(user_params)
         if @user.save
             session[:user_id] = @user.id #log user in
-            redirect_to root_path
+            redirect_to destinations_path
         else
             #show errors
             #render signup form again

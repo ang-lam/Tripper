@@ -10,7 +10,7 @@ module ApplicationHelper
 
     def redirect_if_logged_in
         if logged_in?
-            redirect_to root_path
+            redirect_to destinations_path
         end
     end
 

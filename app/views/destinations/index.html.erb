@@ -3,4 +3,8 @@
 <% @destinations.each do |destination| %>
     <li><%= link_to destination.city, destination_itineraries_path(destination) %>
 <% end %>
+<br>
+
+<br><%= link_to "Create New Destination", new_destination_path %>
+
 

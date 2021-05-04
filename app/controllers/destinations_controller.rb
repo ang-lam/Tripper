@@ -1,35 +1,38 @@
 class DestinationsController < ApplicationController
     def index
-        # @destinations = current_user.destinations.uniq
-        @destinations = Destination.users_trips(current_user)
+        @destinations = current_user.destinations.uniq
+        # @destinations = Destination.users_trips(current_user)
     end
 
     def show
+        #scope method?
         @destination = Destination.find_by(id: params[:id])
+        @itineraries = Itinerary.trips_itineraries(current_user, @destination)
     end
 
     def new
         @top_destinations = Destination.popular_trips
+        @destinations = Destination.all
         @destination = Destination.new
     end
     
     def create
-        @destination = Destination.new(destination_params)
-        if @destination.save
+        @destinations = Destination.all
+        @destination = Destination.find_by(id: destination_params[:id])
+        if @destination
             redirect_to destination_path(@destination)
         else
-            render :new
+            @destination = Destination.new(destination_params)
+            if @destination.save
+                redirect_to destination_path(@destination)
+            else
+                render :new
+            end
         end
     end
 
-    def edit
-    end
-
-    def update
-    end
-
     def destroy
-        @destination = Destination.find_by(id: params[:id])
+        @destination = Destination.find_by(id: params[:destination_id])
         @destination.destroy
         
         redirect_to destinations_path
@@ -38,6 +41,6 @@ class DestinationsController < ApplicationController
     private
 
     def destination_params
-        params.require(:destination).permit(:city, :state, :country)
+        params.require(:destination).permit(:city, :state, :country, :id)
     end
 end

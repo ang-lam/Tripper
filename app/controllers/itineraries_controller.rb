@@ -42,6 +42,11 @@ class ItinerariesController < ApplicationController
         redirect_to destination_itineraries_path(@itinerary.destination)
     end
 
+    def destroy_all
+        current_user.itineraries.destroy_all
+        redirect_to destinations_path
+    end
+
     private
 
     def itinerary_params

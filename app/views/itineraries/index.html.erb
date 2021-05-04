@@ -11,4 +11,4 @@
 
 
 <br><%= link_to "Create New Itinerary", new_destination_itinerary_path %>
-<%= link_to "Delete This Trip", {action: :destroy, id: @destination.id}, method: :delete, data: {confirm: 'Are you sure?'} %>
+<%= link_to "Delete This Trip", destroy_all_destination_itineraries_path(@destination), method: :delete, data: {confirm: 'Are you sure?'} %>

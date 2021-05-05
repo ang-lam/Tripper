@@ -23,6 +23,12 @@ gem 'jbuilder', '~> 2.7'
 gem 'bcrypt', '~> 3.1.7'
 gem 'bootstrap', '~> 4.5.0'
 gem 'jquery-rails'
+gem 'dotenv-rails'
+#allows third party authorization
+gem 'omniauth'
+gem 'omniauth-google-oauth2'
+#protects cross site forgery
+gem 'omniauth-rails_csrf_protection' 
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

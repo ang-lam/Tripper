@@ -26,7 +26,6 @@ class SessionsController < ApplicationController
       u.email = request.env['omniauth.auth'][:info][:email]
       u.password = SecureRandom.hex(15)
     end
-    binding.pry
     if user.valid?
       #log them in and redirect
       session[:user_id] = user.id

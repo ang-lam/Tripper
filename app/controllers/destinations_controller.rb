@@ -1,4 +1,6 @@
 class DestinationsController < ApplicationController
+    before_action :all_destinations, only: [:new, :create]
+    
     def index
         @destinations = current_user.destinations.uniq
         # @destinations = Destination.users_trips(current_user)
@@ -12,12 +14,10 @@ class DestinationsController < ApplicationController
 
     def new
         @top_destinations = Destination.popular_trips
-        @destinations = Destination.all
         @destination = Destination.new
     end
     
     def create
-        @destinations = Destination.all
         @destination = Destination.find_by(id: destination_params[:id])
         if @destination
             redirect_to destination_path(@destination)
@@ -32,6 +32,7 @@ class DestinationsController < ApplicationController
     end
 
     def destroy
+        #dont need destroy - remove?
         @destination = Destination.find_by(id: params[:destination_id])
         @destination.destroy
         
@@ -42,5 +43,9 @@ class DestinationsController < ApplicationController
 
     def destination_params
         params.require(:destination).permit(:city, :state, :country, :id)
+    end
+
+    def all_destinations
+        @destinations = Destination.all
     end
 end

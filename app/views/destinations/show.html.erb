@@ -4,7 +4,7 @@
 <%= @destination.state %><br>
 <%= @destination.country %><br>
 
-<% @destination.itineraries.each do |itinerary| %>
+<% @itineraries.each do |itinerary| %>
     <li><%= link_to itinerary.date,  destination_itinerary_path(@destination, itinerary) %></li>
 <% end %>
 

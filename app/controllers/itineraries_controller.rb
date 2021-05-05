@@ -9,6 +9,7 @@ class ItinerariesController < ApplicationController
 
     def show
         #only render if logged in and belongs to user
+        #order activities by time with scope method
         @itinerary = Itinerary.find_by(id: params[:id])
         @activities = @itinerary.activities
     end
@@ -28,6 +29,10 @@ class ItinerariesController < ApplicationController
         else
             render :new
         end
+    end
+
+    def edit
+
     end
 
     def update

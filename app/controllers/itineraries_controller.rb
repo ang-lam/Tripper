@@ -1,8 +1,8 @@
 class ItinerariesController < ApplicationController
+    before_action :find_destination, only: [:new, :index, :create]
     
     def index
         # @destination = current_user.destinations.find_by(id: params[:destination_id])
-        @destination = Destination.find_by(id: params[:destination_id]) if params[:destination_id]
         @itineraries = Itinerary.trips_itineraries(current_user, @destination)
     end
 
@@ -15,13 +15,11 @@ class ItinerariesController < ApplicationController
     end
    
     def new
-        @destination = Destination.find_by(id: params[:destination_id])
         @itinerary = @destination.itineraries.build
         8.times {@itinerary.activities.build}
     end
 
     def create
-        @destination = Destination.find_by(id: params[:destination_id])
         @itinerary = @destination.itineraries.build(itinerary_params)
         @itinerary.user_id = session[:user_id]
         if @itinerary.save
@@ -41,6 +39,7 @@ class ItinerariesController < ApplicationController
     end
 
     def destroy
+        #might not need this action
         @itinerary = Itinerary.find_by(id: params[:id])
         @itinerary.destroy
         
@@ -57,5 +56,7 @@ class ItinerariesController < ApplicationController
     def itinerary_params
         params.require(:itinerary).permit(:date, :destination_id, :user_id, activities_attributes: [:time, :description])
     end
+
+
 
 end

@@ -5,4 +5,10 @@ class ApplicationController < ActionController::Base
 
     def home
     end
+
+    private
+
+    def find_destination
+        @destination = Destination.find_by(id: params[:destination_id])
+    end
 end

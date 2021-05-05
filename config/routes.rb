@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   resources :activities
 
   resources :destinations do
-    resources :itineraries, only: [:index, :new, :create, :show, :destroy] do
+    resources :itineraries, only: [:index, :new, :create, :show, :destroy, :edit, :update] do
       delete :destroy_all, on: :collection
     end
   end

@@ -1,0 +1,15 @@
+<%= form_with model: @itinerary do |f| %>
+
+    
+    
+    <h2>Add Activity</h2><br>
+    <%= f.fields_for :activities do |a| %>
+        <%= a.label :time %>
+        <%= a.time_field :time %>
+        <%= a.label :description %>
+        <%= a.text_field :description %><br><br>
+    <% end %>
+
+
+    <%= f.submit 'Submit' %>
+<% end %>

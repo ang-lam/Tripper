@@ -1,5 +1,7 @@
 class DestinationsController < ApplicationController
     before_action :all_destinations, only: [:new, :create]
+
+    #add if logged_in can view
     
     def index
         @destinations = current_user.destinations.uniq
@@ -7,7 +9,7 @@ class DestinationsController < ApplicationController
     end
 
     def show
-        #scope method?
+        #scope method? - dont need this action? 
         @destination = Destination.find_by(id: params[:id])
         @itineraries = Itinerary.trips_itineraries(current_user, @destination)
     end

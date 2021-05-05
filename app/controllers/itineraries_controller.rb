@@ -30,16 +30,24 @@ class ItinerariesController < ApplicationController
     end
 
     def edit
-
+        @itinerary = Itinerary.find_by(id: params[:id])
+        8.times {@itinerary.activities.build}
     end
 
     def update
+        @itinerary = Itinerary.find_by(id: params[:id])
+        @itinerary.update(itinerary_params)
+        if @itinerary.valid?
+            redirect_to destination_itineraries_path(@itinerary.destination, @itinerary)
+        else
+            render :edit
+        end
         #find itinerary
         #if @itinerary.update(params)
+        
     end
 
     def destroy
-        #might not need this action
         @itinerary = Itinerary.find_by(id: params[:id])
         @itinerary.destroy
         
@@ -54,7 +62,7 @@ class ItinerariesController < ApplicationController
     private
 
     def itinerary_params
-        params.require(:itinerary).permit(:date, :destination_id, :user_id, activities_attributes: [:time, :description])
+        params.require(:itinerary).permit(:date, :destination_id, :user_id, activities_attributes: [:id, :time, :description])
     end
 
 

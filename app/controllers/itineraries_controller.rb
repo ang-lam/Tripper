@@ -1,8 +1,9 @@
 class ItinerariesController < ApplicationController
     before_action :find_destination, only: [:new, :index, :create]
+    before_action :find_itinerary, only: [:show, :edit, :update, :destroy]
+    before_action :activities_build, only: [:new, :edit]
     
     def index
-        # @destination = current_user.destinations.find_by(id: params[:destination_id])
         @itineraries = Itinerary.trips_itineraries(current_user, @destination)
     end
 
@@ -10,13 +11,11 @@ class ItinerariesController < ApplicationController
     def show
         #only render if logged in and belongs to user
         #order activities by time with scope method
-        @itinerary = Itinerary.find_by(id: params[:id])
         @activities = @itinerary.activities
     end
    
     def new
         @itinerary = @destination.itineraries.build
-        8.times {@itinerary.activities.build}
     end
 
     def create
@@ -30,27 +29,19 @@ class ItinerariesController < ApplicationController
     end
 
     def edit
-        @itinerary = Itinerary.find_by(id: params[:id])
-        8.times {@itinerary.activities.build}
     end
 
     def update
-        @itinerary = Itinerary.find_by(id: params[:id])
         @itinerary.update(itinerary_params)
         if @itinerary.valid?
             redirect_to destination_itineraries_path(@itinerary.destination, @itinerary)
         else
             render :edit
-        end
-        #find itinerary
-        #if @itinerary.update(params)
-        
+        end        
     end
 
     def destroy
-        @itinerary = Itinerary.find_by(id: params[:id])
-        @itinerary.destroy
-        
+        @itinerary.destroy 
         redirect_to destination_itineraries_path(@itinerary.destination)
     end
 
@@ -65,6 +56,12 @@ class ItinerariesController < ApplicationController
         params.require(:itinerary).permit(:date, :destination_id, :user_id, activities_attributes: [:id, :time, :description])
     end
 
+    def find_itinerary
+        @itinerary = Itinerary.find_by(id: params[:id])
+    end
 
+    def activities_build
+        8.times {@itinerary.activities.build}
+    end
 
 end

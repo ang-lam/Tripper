@@ -1,15 +1,22 @@
-<h1>Sign Up Form</h1>
+<h1>Create an Account</h1>
+
+<br><br>
 
 <%= render partial: "destinations/errors", locals: {object: @user} %>
 
 <%= form_with url: signup_path do |f| %>
     <%= f.label :first_name %>
-    <%= f.text_field :first_name %> <br>
+    <%= f.text_field :first_name %> <br><br>
     <%= f.label :last_name %>
-    <%= f.text_field :last_name %> <br>
+    <%= f.text_field :last_name %> <br><br>
     <%= f.label :email %>
-    <%= f.text_field :email %> <br>
+    <%= f.text_field :email %> <br><br>
     <%= f.label :password %>
-    <%= f.password_field :password %> <br>
+    <%= f.password_field :password %> <br><br>
     <%= f.submit 'Create Account' %>
 <% end %>
+<br>
+
+<h3> Or Login with Google:</h3>
+<br>
+<%= button_to "Google", '/auth/google_oauth2' %>

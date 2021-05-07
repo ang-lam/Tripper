@@ -1,32 +1,13 @@
 <h1> Create an Itinerary for Your Trip</h1>
 
-<% if @itinerary.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(@itinerary.errors.count, "error") %> prohibited this article from being saved:</h2>
-
-    <ul>
-      <% @itinerary.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
+<%= render partial: "destinations/errors", locals: {object: @itinerary} %>
 
 <%= form_with model: [@destination, @itinerary] do |f| %>
     <%= f.hidden_field :destination_id, value: @destination.id %>
     <%= f.label :date %>
     <%= f.date_field :date %>
-
     
-    
-    <h2>Add Activity</h2><br>
-    <%= f.fields_for :activities do |a| %>
-        <%= a.label :time %>
-        <%= a.time_field :time %>
-        <%= a.label :description %>
-        <%= a.text_field :description %><br><br>
-    <% end %>
-
+    <%= render partial: "form", locals: {f: f} %>
 
     <%= f.submit 'Submit' %>
 <% end %>

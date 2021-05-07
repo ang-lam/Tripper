@@ -1,7 +1,7 @@
 class ItinerariesController < ApplicationController
     before_action :find_destination, only: [:new, :index, :create]
     before_action :find_itinerary, only: [:show, :edit, :update, :destroy]
-    before_action :activities_build, only: [:new, :edit]
+    # before_action :activities_build, only: [:new, :edit]
     
     def index
         @itineraries = Itinerary.trips_itineraries(current_user, @destination)
@@ -16,6 +16,7 @@ class ItinerariesController < ApplicationController
    
     def new
         @itinerary = @destination.itineraries.build
+        8.times {@itinerary.activities.build}
     end
 
     def create
@@ -29,6 +30,7 @@ class ItinerariesController < ApplicationController
     end
 
     def edit
+        8.times {@itinerary.activities.build}
     end
 
     def update
@@ -60,8 +62,8 @@ class ItinerariesController < ApplicationController
         @itinerary = Itinerary.find_by(id: params[:id])
     end
 
-    def activities_build
-        8.times {@itinerary.activities.build}
-    end
+    # def activities_build
+        
+    # end
 
 end

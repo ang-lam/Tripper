@@ -1,15 +1,11 @@
+<h1>Edit your itinerary</h1>
+
+<%= render partial: "destinations/errors", locals: {object: @itinerary} %>
+
 <%= form_with model: @itinerary do |f| %>
 
-    
-    
-    <h2>Add Activity</h2><br>
-    <%= f.fields_for :activities do |a| %>
-        <%= a.label :time %>
-        <%= a.time_field :time %>
-        <%= a.label :description %>
-        <%= a.text_field :description %><br><br>
-    <% end %>
-
+    <%= render partial: "form", locals: {f: f} %>
 
     <%= f.submit 'Submit' %>
+
 <% end %>

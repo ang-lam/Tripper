@@ -11,7 +11,6 @@ class ItinerariesController < ApplicationController
     def show
         #only render if logged in and belongs to user
         #order activities by time with scope method
-        @activities = @itinerary.activities
     end
    
     def new
@@ -48,8 +47,11 @@ class ItinerariesController < ApplicationController
     end
 
     def destroy_all
-        current_user.itineraries.destroy_all
+        itineraries = Itinerary.where(user_id: current_user.id, destination_id: params[:destination_id])
+        itineraries.destroy_all
         redirect_to destinations_path
+        #where user and that destination id shows truthy
+        #where(user_id: current_user.id, destination_id: params[:destination_id])
     end
 
     private

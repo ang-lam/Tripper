@@ -1,6 +1,5 @@
-<h1>Top Destinations</h1>
-
 <% if @top_destinations %>
+<h1>Top Destinations</h1>
   <% @top_destinations.each do |destination| %>
     <li><%= destination.city %>
   <% end %>
@@ -10,10 +9,10 @@
 
 <%= render partial: "errors", locals: {object: @destination} %>
 
-
-<!-- allow users to select from existing locations (drop down select) -->
 <%= form_with model: @destination do |f| %>
+    <h4>Select your destination:</h4>
     <%= f.collection_select :id, @destinations, :id, :collection_select_destination_name, include_blank: true %><br>
+    <h4>Enter a destination</h4>
     <%= f.label :city %>
     <%= f.text_field :city %> <br>
     <%= f.label :state %>

@@ -25,7 +25,7 @@ class DestinationsController < ApplicationController
         else
             @destination = Destination.new(destination_params)
             if @destination.save
-                redirect_to destination_path(@destination)
+                redirect_to destination_itineraries_path(@destination)
             else
                 render :new
             end

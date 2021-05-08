@@ -7,7 +7,6 @@ class Itinerary < ApplicationRecord
         allow_destroy: true, 
         reject_if: proc {|attr| attr['time'].blank? && attr['description'].blank?}
 
-    # validates :date, uniqueness:  { message: "has an exisiting itinerary"}
     validate :date_cannot_be_in_the_past
 
     def date_cannot_be_in_the_past

@@ -7,12 +7,6 @@ class DestinationsController < ApplicationController
         # @destinations = Destination.users_trips(current_user)
     end
 
-    def show
-        #scope method? - dont need this action? 
-        @destination = Destination.find_by(id: params[:id])
-        @itineraries = Itinerary.trips_itineraries(current_user, @destination)
-    end
-
     def new
         @top_destinations = Destination.popular_trips
         @destination = Destination.new

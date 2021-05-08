@@ -4,7 +4,7 @@ class ItinerariesController < ApplicationController
     # before_action :activities_build, only: [:new, :edit]
     
     def index
-        @itineraries = Itinerary.trips_itineraries(current_user, @destination)
+        @itineraries = Itinerary.trips_itineraries(current_user, @destination).order_itineraries
     end
 
 
@@ -47,7 +47,8 @@ class ItinerariesController < ApplicationController
     end
 
     def destroy_all
-        itineraries = Itinerary.where(user_id: current_user.id, destination_id: params[:destination_id])
+        itineraries = Itinerary.trips_itineraries(current_user, params[:destination_id])
+        # itineraries = Itinerary.where(user_id: current_user.id, destination_id: params[:destination_id])
         itineraries.destroy_all
         redirect_to destinations_path
         #where user and that destination id shows truthy

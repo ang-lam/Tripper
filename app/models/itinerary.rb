@@ -16,6 +16,7 @@ class Itinerary < ApplicationRecord
         end
     end
 
-    scope :trips_itineraries, -> (user, destination) {where(destination_id: destination.id, user_id: user.id).order(:date)}
+    scope :trips_itineraries, -> (user, destination) {where(destination_id: destination, user_id: user.id)}
+    scope :order_itineraries, -> {order(:date)}
 
 end

@@ -32,14 +32,6 @@ class DestinationsController < ApplicationController
         end
     end
 
-    def destroy
-        #dont need destroy - remove?
-        @destination = Destination.find_by(id: params[:destination_id])
-        @destination.destroy
-        
-        redirect_to destinations_path
-    end
-
     private
 
     def destination_params

@@ -9,8 +9,6 @@ class ItinerariesController < ApplicationController
 
 
     def show
-        #only render if logged in and belongs to user
-        #order activities by time with scope method
         @activities = Activity.order_activities(@itinerary)
     end
    

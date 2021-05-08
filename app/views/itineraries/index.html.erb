@@ -1,9 +1,11 @@
-<h1> Itineraries</h1>
+<h1> <%= @destination.city %> Trip</h1>
+
+<br>
 
 <% @itineraries.each do |itinerary| %>
-    <%= link_to itinerary.date.strftime("%A, %b %e, %Y"), destination_itinerary_path(@destination, itinerary) %>
+    <%= link_to display_date(itinerary), destination_itinerary_path(@destination, itinerary) %>
         <% itinerary.activities.sort_by{|act| act.time}.each do |activity| %>
-        <li><%= activity.time.strftime("%l:%M %p") %>
+        <li><%= display_time(activity) %>
         <%= activity.description %></li>
     <% end %><br>
 <% end %>

@@ -1,11 +1,11 @@
-<h1><%= @itinerary.date.strftime("%A, %b %e, %Y") %></h1>
+<h4><%= display_date(@itinerary) %> in <%= @itinerary.destination.city %></h4>
 
 <% @activities.each do |act| %>
-    <li><%= act.time.strftime("%l:%M %p") %>
+    <li><%= display_time(act) %>
     <%= act.description %></li>
 <% end %>
 
 
-<%= link_to "Go Back to All Itineraries", destination_itineraries_path(@itinerary.destination) %>
-<%= link_to "Edit This Itinerary", edit_destination_itinerary_path(@itinerary.destination, @itinerary) %>
+<%= link_to "Go Back to All Itineraries", destination_itineraries_path(@itinerary.destination) %> |
+<%= link_to "Edit This Itinerary", edit_destination_itinerary_path(@itinerary.destination, @itinerary) %> |
 <%= link_to "Delete This Itinerary", {action: :destroy, id: @itinerary.id}, method: :delete, data: {confirm: 'Are you sure?'} %>

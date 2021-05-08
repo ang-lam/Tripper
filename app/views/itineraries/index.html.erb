@@ -2,7 +2,7 @@
 
 <% @itineraries.each do |itinerary| %>
     <%= link_to itinerary.date.strftime("%A, %b %e, %Y"), destination_itinerary_path(@destination, itinerary) %>
-        <% itinerary.activities.each do |activity| %>
+        <% itinerary.activities.sort_by{|act| act.time}.each do |activity| %>
         <li><%= activity.time.strftime("%l:%M %p") %>
         <%= activity.description %></li>
     <% end %><br>

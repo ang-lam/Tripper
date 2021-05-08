@@ -1,5 +1,6 @@
 class DestinationsController < ApplicationController
     before_action :all_destinations, only: [:new, :create]
+    before_action :not_logged_in?, only: [:index, :new]
 
     #add if logged_in can view
     

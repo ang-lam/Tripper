@@ -4,7 +4,6 @@ class DestinationsController < ApplicationController
     
     def index
         @destinations = current_user.destinations.uniq
-        # @destinations = Destination.users_trips(current_user)
     end
 
     def new

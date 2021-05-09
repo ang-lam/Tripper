@@ -17,5 +17,5 @@ class Destination < ApplicationRecord
         "#{city.split.map(&:capitalize).join(' ')}, #{state.split.map(&:capitalize).join(' ') if state}#{"," if state.present?} #{country.split.map(&:capitalize).join(' ')}"
     end
 
-    scope :popular_trips, -> {joins(:itineraries).group('id').order('count(destinations.id) desc').limit(2)}
+    scope :popular_trips, -> {joins(:itineraries).group('id').order('count(destinations.id) desc').limit(3)}
 end

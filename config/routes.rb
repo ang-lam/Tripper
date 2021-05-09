@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get '/auth/:provider/callback', to: 'sessions#omniauth'
   
   resources :activities
+  resources :itineraries
 
   resources :destinations, only: [:index, :new, :create] do
     resources :itineraries, only: [:index, :new, :create, :show, :destroy, :edit, :update] do
@@ -15,8 +16,5 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :itineraries do
-    resources :activities, only: [:new, :create]
-  end
   
 end

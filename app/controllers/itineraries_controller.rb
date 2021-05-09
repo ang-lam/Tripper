@@ -33,7 +33,7 @@ class ItinerariesController < ApplicationController
 
     def update
         @itinerary.update(itinerary_params)
-        if @itinerary.valid?
+        if @itinerary.save
             redirect_to destination_itineraries_path(@itinerary.destination, @itinerary)
         else
             render :edit
@@ -54,7 +54,7 @@ class ItinerariesController < ApplicationController
     private
 
     def itinerary_params
-        params.require(:itinerary).permit(:date, :destination_id, :user_id, activities_attributes: [:id, :time, :description])
+        params.require(:itinerary).permit(:date, :destination_id, :user_id, activities_attributes: [:id, :time, :description, :_destroy])
     end
 
     def find_itinerary

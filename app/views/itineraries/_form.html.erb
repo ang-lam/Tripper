@@ -4,5 +4,11 @@
     <%= a.label :time %>
     <%= a.time_field :time %>
     <%= a.label :description %>
-    <%= a.text_field :description %><br><br>
+    <%= a.text_field :description %>
+    <% if a.object.persisted? %>
+      <%= a.check_box :_destroy %>
+      <%= a.label :_destroy, "Remove" %>
+    <% end %>
+    <br><br>
+    
 <% end %>

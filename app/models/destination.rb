@@ -18,4 +18,5 @@ class Destination < ApplicationRecord
     end
 
     scope :popular_trips, -> {joins(:itineraries).group('id').order('count(destinations.id) desc').limit(3)}
+    scope :alphabetize_destinations, -> {order(:city)}
 end

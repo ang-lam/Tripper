@@ -22,13 +22,25 @@ houston = Destination.create(city: "Houston", state: "Texas", country: "United S
 portland = Destination.create(city: "Portland", state: "Oregon", country: "United States")
 miami = Destination.create(city: "Miami", state: "Florida", country: "United States")
 toronto = Destination.create(city: "Toronto", country: "Canada")
+paris = Destination.create(city: "Paris", country: "France")
+london = Destination.create(city: "London", country: "England")
+miami = Destination.create(city: "Maui", state: "Hawaii", country: "United States")
+barcelona = Destination.create(city: "Barcelona", country: "Spain")
+rome = Destination.create(city: "Phuket", country: "Thailand")
+ny = Destination.create(city: "New York City", state: "New York", country: "United States")
+
+
+
 
 itin_1 = Itinerary.create(date: "2021-05-19", user_id: mark.id, destination_id: tokyo.id)
 itin_2 = Itinerary.create(date: "2021-05-20", user_id: tom.id, destination_id: tokyo.id)
 itin_3 = Itinerary.create(date: "2021-05-21", user_id: sarah.id, destination_id: tokyo.id)
 itin_4 = Itinerary.create(date: "2021-04-19", user_id: sarah.id, destination_id: la.id)
 itin_5 = Itinerary.create(date: "2021-04-19", user_id: mark.id, destination_id: la.id)
-itin_6 = Itinerary.create(date: "2021-04-19", user_id: tom.id, destination_id: miami.id)
+itin_6 = Itinerary.create(date: "2021-04-19", user_id: mark.id, destination_id: miami.id)
+itin_7 = Itinerary.create(date: "2021-04-19", user_id: mark.id, destination_id: london.id)
+itin_8 = Itinerary.create(date: "2021-04-19", user_id: tom.id, destination_id: london.id)
+itin_9 = Itinerary.create(date: "2021-04-19", user_id: tom.id, destination_id: london.id)
 
 
 

@@ -14,7 +14,7 @@ Execute:
     rails db:migrate
     rails db:seed
 
-#Logging in through a google account:
+## Logging in through a google account:
     https://console.developers.google.com/apis
     > "Credentials"
     > "+ Create Credentials" 

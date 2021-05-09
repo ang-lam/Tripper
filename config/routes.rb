@@ -6,15 +6,14 @@ Rails.application.routes.draw do
   post '/logout', to: 'sessions#destroy'
   post '/signup', to: 'users#create'
   get '/auth/:provider/callback', to: 'sessions#omniauth'
-  
-  resources :activities
-  resources :itineraries
 
   resources :destinations, only: [:index, :new, :create] do
     resources :itineraries, only: [:index, :new, :create, :show, :destroy, :edit, :update] do
       delete :destroy_all, on: :collection
     end
   end
+
+  resources :itineraries, only: [:show, :create, :update, :destroy]
 
   
 end

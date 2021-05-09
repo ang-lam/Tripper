@@ -14,7 +14,7 @@ class DestinationsController < ApplicationController
     def create
         @destination = Destination.find_by(id: destination_params[:id])
         if @destination
-            redirect_to destination_path(@destination)
+            redirect_to destination_itineraries_path(@destination)
         else
             @destination = Destination.new(destination_params)
             if @destination.save

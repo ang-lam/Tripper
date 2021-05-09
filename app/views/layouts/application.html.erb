@@ -12,6 +12,11 @@
 
   <body>
     <br><br>
+    <% if logged_in? %>
+      <%= link_to "All Destinations", destinations_path %> |
+      <%= link_to "Logout", logout_path, method: :post, data: {confirm: 'Are you sure?'} %>
+      <br><br>
+    <% end %>
     <%= yield %>
   </body>
 </html>

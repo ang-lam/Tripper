@@ -1,4 +1,4 @@
-# Sinatra Project - Chalk Up
+# Rails Project - Tripper
 
 Phase 3 Flatiron project.
 
@@ -13,6 +13,22 @@ Execute:
     bundle install
     rails db:migrate
     rails db:seed
+
+Logging in through a google account:
+    https://console.developers.google.com/apis
+    > "Credentials"
+    > "+ Create Credentials" 
+    > "OAuth Client ID"
+    > Application type > "Web Application"
+    > Name > repository name
+    > "CREATE"
+    > Copy the Client ID and Secret Key and paste them in a file
+
+    Git clone the repository
+    Create an .env file in the root directory of the repository with:
+        GOOGLE_CLIENT_ID = <paste Your Client ID here>
+        GOOGLE_SECRET_CLIENT = <paste Your Client Secret here>
+    Add .env inside .gitignore file
 
 
 ## Usage

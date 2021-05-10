@@ -1,6 +1,6 @@
 Specs:
 
- [x] Using Ruby on Rails for the project - used rails framework for project
+ [x)] Using Ruby on Rails for the project - used rails framework for project
  [x] Include at least one has_many relationship (x has_many y; e.g. User has_many Recipes) - Itinerary has_many Activities
  [x] Include at least one belongs_to relationship (x belongs_to y; e.g. Post belongs_to User) - Activity belongs to Itinerary
  [x] Include at least two has_many through relationships (x has_many y through z; e.g. Recipe has_many Items through Ingredients) - User has_many Destinations through Itineraries, Destination has_many Users through Itineraries

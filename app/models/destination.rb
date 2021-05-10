@@ -8,7 +8,7 @@ class Destination < ApplicationRecord
     validate :destination_entered_is_unique
 
     def destination_entered_is_unique
-        if Destination.find_by(city: city, state: state)
+        if Destination.find_by(city: city, state: state, country: country)
             errors.add(:city, "already exists. Please select from drop down menu.")
         end
     end

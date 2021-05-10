@@ -2,7 +2,7 @@ class DestinationsController < ApplicationController
     before_action :not_logged_in?, only: [:index, :new]
     
     def index
-        @destinations = current_user.destinations.uniq
+        @destinations = current_user.destinations.uniq.sort_by { |d| d.city}
     end
 
     def new

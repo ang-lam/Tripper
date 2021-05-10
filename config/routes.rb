@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :itineraries, only: [:show, :create, :update, :destroy]
+  resources :itineraries, only: [:show, :update]
 
   
 end

@@ -13,7 +13,7 @@ class Destination < ApplicationRecord
         end
     end
 
-    def collection_select_destination_name
+    def full_destination_name
         "#{city.split.map(&:capitalize).join(' ')}, #{state.split.map(&:capitalize).join(' ') if state}#{"," if state.present?} #{country.split.map(&:capitalize).join(' ')}"
     end
 

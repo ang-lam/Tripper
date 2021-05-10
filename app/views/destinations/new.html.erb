@@ -13,7 +13,7 @@
 
 <%= form_with model: @destination do |f| %>
     <h4>Select your destination:</h4>
-    <%= f.collection_select :id, @destinations, :id, :collection_select_destination_name, include_blank: true %><br><br>
+    <%= f.collection_select :id, @destinations, :id, :full_destination_name, include_blank: true %><br><br>
     <h4>Enter a destination</h4>
     <%= f.label :city %>
     <%= f.text_field :city %> <br><br>

@@ -1,7 +1,7 @@
 <h2>Your Trips</h2>
 
 <% @destinations.each do |destination| %>
-    <li><%= link_to destination.city, destination_itineraries_path(destination) %>
+    <li><%= link_to destination.full_destination_name, destination_itineraries_path(destination) %>
 <% end %>
 <br>
 

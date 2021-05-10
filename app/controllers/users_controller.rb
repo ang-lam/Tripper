@@ -11,8 +11,6 @@ class UsersController < ApplicationController
             session[:user_id] = @user.id
             redirect_to destinations_path
         else
-            #show errors
-            #render signup form again
             render :new
         end
     end

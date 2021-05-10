@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get '/auth/:provider/callback', to: 'sessions#omniauth'
 
   resources :destinations, only: [:index, :new, :create] do
-    resources :itineraries, only: [:index, :new, :create, :show, :destroy, :edit, :update] do
+    resources :itineraries do
       delete :destroy_all, on: :collection
     end
   end

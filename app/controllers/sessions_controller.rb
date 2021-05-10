@@ -9,7 +9,6 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to destinations_path
     else
-      #display errors with flash? cannot use #errors
       render :new
     end
   end
@@ -27,7 +26,6 @@ class SessionsController < ApplicationController
       u.password = SecureRandom.hex(15)
     end
     if user.valid?
-      #log them in and redirect
       session[:user_id] = user.id
       redirect_to destinations_path
     else
